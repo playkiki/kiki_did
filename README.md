@@ -1,5 +1,5 @@
-# Decentralised identity
-Decentralised identity is an emerging concept that gives back control of identity to consumers through the use of an identity wallet in which they collect verified information about themselves from certified issuers (such as the Government)
+# Decentralized Identity
+Decentralized Identity is an emerging concept that gives back control of identity to consumers through the use of an identity wallet in which they collect verified information about themselves from certified issuers (such as the Government)
 
 ![did_concept](https://user-images.githubusercontent.com/33611925/125380481-344a0880-e3cd-11eb-89cf-0854c91d0954.png)
 
@@ -16,7 +16,7 @@ Decentralised identity is an emerging concept that gives back control of identit
 
 ## License 
 
-see license [https://github.com/playkiki/kiki_did/blob/main/LICENSE]
+see license https://github.com/playkiki/kiki_did/blob/main/LICENSE
 
 ## How to participate
-Register github issue [https://github.com/playkiki/kiki_did/issues] 
+Register github issue at https://github.com/playkiki/kiki_did/issues 
