@@ -1,0 +1,88 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["prettier"],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "class-methods-use-this": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-dynamic-require": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    "no-param-reassign": 0,
+    "global-require": 0,
+    "linebreak-style": 0,
+    "key-spacing": [
+      2,
+      {
+        "singleLine": {
+          "beforeColon": false,
+          "afterColon": true
+        },
+        "multiLine": {
+          "beforeColon": true,
+          "afterColon": true,
+          "align": "colon"
+        }
+      }
+    ],
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "comma-dangle": ["error", "never"],
+    "brace-style": [
+      "error",
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "switch-colon-spacing": [
+      "error",
+      {
+        "after": true,
+        "before": false
+      }
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "always",
+      {
+        "arraysInArrays": false
+      }
+    ],
+    "no-unexpected-multiline": "error",
+    "indent": [
+      2,
+      2,
+      {
+        "VariableDeclarator": { "var": 2, "let": 2, "const": 3 },
+        "FunctionDeclaration": { "parameters": "first" },
+        "FunctionExpression": { "parameters": "first" },
+        "CallExpression": { "arguments": "first" },
+        "ArrayExpression": 1,
+        "ObjectExpression": 1
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "consistent": true
+      }
+    ],
+    "max-len": ["error", { "code": 230 }],
+    // "function-paren-newline": ["error", "never"],
+    "no-multi-spaces": ["error", { "exceptions": { "BinaryExpression": true, "VariableDeclarator": true, "ImportDeclaration": true } }]
+  }
+}

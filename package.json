@@ -1,0 +1,85 @@
+{
+  "name": "kiki-did",
+  "version": "0.1.0",
+  "description": "KIKI DID server",
+  "main": "dist/server.js",
+  "author": "PLAYKIKI",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/playkiki/kiki_did"
+  },
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "start": "nodemon --exec babel-node --inspect src/server.js 3303",
+    "prebuild": "rimraf dist",
+    "build": "npm run lint && babel src --out-dir dist --copy-files --include-dotfiles && npm run copy-to-dist",
+    "serve": "cross-env NODE_ENV=development node dist/server.js",
+    "lint": "eslint --ext .js --ignore-pattern *.tests.js --fix ./src",
+    "format": "prettier --write '*.{js,md}' 'src/**/*.js'",
+    "copy-to-dist": "copyfiles --up 1 src/openapi.json dist",
+    "test": "yarn jest",
+    "jest": "jest --passWithNoTests --detectOpenHandles",
+    "precommit": "yarn test"
+  },
+  "dependencies": {
+    "async": "^3.1.0",
+    "body-parser": "^1.18.3",
+    "check-types": "^10.0.0",
+    "console-stamp": "^0.2.9",
+    "cors": "^2.8.5",
+    "crawler": "^1.2.1",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-async-handler": "^1.1.4",
+    "express-validator": "^5.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mobile-detect": "^1.4.4",
+    "moment": "^2.24.0",
+    "mysql2": "^1.6.5",
+    "node-schedule": "^1.3.2",
+    "parse-domain": "^2.3.2",
+    "python-shell": "^1.0.8",
+    "querystring": "^0.2.0",
+    "random-js": "^2.1.0",
+    "request": "^2.88.0",
+    "sequelize": "^5.22.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "app-module-path": "^2.2.0",
+    "babel-eslint": "^10.0.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "copyfiles": "^2.1.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "faker": "^4.1.0",
+    "husky": "^1.3.1",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.1.7",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0",
+    "rimraf": "^2.6.3",
+    "supertest": "^3.3.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "yarn lint"
+    ]
+  },
+  "husky": {
+    "hooks": {}
+  }
+}
