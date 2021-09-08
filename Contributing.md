@@ -1,4 +1,4 @@
-# Contriubting Guidelines
+# Contributing Guidelines
 Please follow these guidelines when you are trying to contribue to kiki_did project.
 
 ## Code formatting
