@@ -20,3 +20,6 @@ see license https://github.com/playkiki/kiki_did/blob/main/LICENSE
 
 ## How to participate
 Register github issue at https://github.com/playkiki/kiki_did/issues/new/choose
+
+## Contributing guidelines
+- [Contributing Guidelines](https://github.com/playkiki/kiki_did/blob/main/Contributing.md)
