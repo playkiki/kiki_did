@@ -22,4 +22,150 @@ see license https://github.com/playkiki/kiki_did/blob/main/LICENSE
 Register github issue at https://github.com/playkiki/kiki_did/issues/new/choose
 
 ## Contributing guidelines
-- [Contributing Guidelines](https://github.com/playkiki/kiki_did/blob/main/CONTRIBUTING.md)
+
+### - _Formatting_
+
+### 2 spaces for indentation
+
+Use 2 spaces for indenting your code and swear an oath to never mix tabs and spaces
+
+### Use semicolons
+
+According to [scientific research](https://news.ycombinator.com/item?id=1547647), the usage of semicolons is a core value of our community. Consider the points of [the opposition](https://blog.izs.me/2010/12/an-open-letter-to-javascript-leaders-regarding/), but be a traditionalist when it comes to abusing error correction mechanisms for cheap syntactic pleasures.
+
+### 80 characters per line
+
+Limit your lines to 80 characters. Yes, screens have gotten much bigger over the last few years, but your brain has not. Use the additional room for split screen, your editor supports that, right?
+
+### Use single quotes
+
+Use single quotes, unless you are writing JSON. This helps you separate your objects’ strings from normal strings.
+
+Right:
+```
+var foo = ‘bar’;
+```
+
+Wrong:
+```
+var foo = “bar”;
+```
+
+### Opening braces go on the same line
+
+Your opening braces go on the same line as the statement.
+
+Right:
+```
+if (true) {
+  console.log(‘winning’);
+}
+```
+
+Wrong:
+```
+if (true)
+{
+  console.log(‘losing’);
+}
+```
+
+Also, notice the use of white space before and after the condition statement. What if you want to write ‘else’ or ‘else if’ along with your ‘if’…
+
+Right:
+```
+if (true) {
+  console.log(‘winning’);
+} else if (false) {
+  console.log(‘this is good’);
+} else {
+  console.log(‘finally’);
+}
+```
+
+Wrong:
+```
+if (true)
+{
+  console.log(‘losing’);
+}
+else if (false)
+{
+  console.log(‘this is bad’);
+}
+else
+{
+  console.log(‘not good’);
+}
+```
+
+### Declare one variable per var statement
+
+Declare one variable per var statement, it makes it easier to re-order the lines.
+
+Right:
+```
+var keys = [‘foo’, ‘bar’];
+var values = [23, 42];
+var object = {};
+```
+
+Wrong:
+```
+var keys = [‘foo’, ‘bar’],
+values = [23, 42],
+object = {},
+key;
+```
+
+### - _Naming Conventions_
+
+### Use [lowerCamelCase](http://wiki.c2.com/?LowerCamelCase) for variables, properties and function names
+
+Variables, properties and function names should use lowerCamelCase. They should also be descriptive. Single character variables and uncommon abbreviations should generally be avoided.
+
+Right:
+```
+var adminUser = db.query(‘SELECT * FROM users …’);
+```
+
+Wrong:
+```
+var admin_user = db.query(‘SELECT * FROM users …’);
+```
+
+### Use [UpperCamelCase](http://wiki.c2.com/?UpperCamelCase) for class names
+
+Class names should be capitalised using UpperCamelCase.
+
+Right:
+```
+function BankAccount() {
+}
+```
+
+Wrong:
+```
+function bank_Account() {
+}
+```
+
+### Use UPPERCASE for Constants
+
+Constants should be declared as regular variables or static class properties, using all uppercase letters.
+
+Right:
+```
+var SECOND = 1 * 1000;
+function File() {
+}
+File.FULL_PERMISSIONS = 0777;
+```
+
+Wrong:
+```
+const SECOND = 1 * 1000;
+function File() {
+}
+File.fullPermissions = 0777;
+```
