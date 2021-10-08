@@ -1,4 +1,4 @@
-const DID_PLACEHOLDER = 'GENESIS'
+const DID_PLACEHOLDER = 'KIKI-GENESIS'
 
 /**
  * A class for creating ipfs based DID Documents.
@@ -7,15 +7,11 @@ const DID_PLACEHOLDER = 'GENESIS'
 class DidDocument {
   /**
    * Create a new DID Document.
-   *
-   * @param     {Object}        ipfs            An js-ipfs instance
-   * @param     {String}        method          The name of the DID Method
-   * @return    {DidDocument}                   self
    */
-  constructor (ipfs, method) {
+  constructor (ipfs, method, cid) {
     this._ipfs = ipfs
     this._content = {
-      id : `did:${method}:${DID_PLACEHOLDER}`
+      id : `did:${method}:${cid || DID_PLACEHOLDER}`
     }
   }
 
@@ -28,10 +24,6 @@ class DidDocument {
 
   /**
    * Load an already existing DID Document.
-   *
-   * @param     {Object}        ipfs            An js-ipfs instance
-   * @param     {String}        documentCid     The CID of the document
-   * @return    {Promise<DidDocument>}                   self
    */
   static async load (ipfs, documentCid) {
     const doc = new DidDocument(ipfs)
@@ -42,12 +34,6 @@ class DidDocument {
 
   /**
    * Add a new public key
-   *
-   * @param     {String}        id              The id of the key, e.g. "key1"
-   * @param     {String}        type            The type of the key
-   * @param     {String}        encoding        The encoding of the key
-   * @param     {String}        key             The encoded public key
-   * @param     {String}        owner           The owner of the key (optional)
    */
   addPublicKey (id, type, encoding, key, owner) {
     if (!this._content.publicKey) {
@@ -66,8 +52,6 @@ class DidDocument {
 
   /**
    * Remove a public key
-   *
-   * @param     {String}        id              The id of the key, e.g. "key1"
    */
   removePublicKey (id) {
     const idx = this._content.publicKey.findIndex(e => e.id.endsWith(id))
@@ -79,9 +63,6 @@ class DidDocument {
 
   /**
    * Add a new authentication
-   *
-   * @param     {String}        type            The type of the authentication
-   * @param     {String}        id              The id of the key to be used, e.g. "key1"
    */
   addAuthentication (type, id) {
     if (!this._content.authentication) {
@@ -95,8 +76,6 @@ class DidDocument {
 
   /**
    * Remove an authentication
-   *
-   * @param     {String}        id              The id of the key, e.g. "key1"
    */
   removeAuthentication (id) {
     const idx = this._content.authentication.findIndex(e => e.publicKey.endsWith(id))
@@ -108,11 +87,6 @@ class DidDocument {
 
   /**
    * Add a new service
-   *
-   * @param     {String}        id                  The id of the key to be used, e.g. "key1"
-   * @param     {String}        type                The type of the service
-   * @param     {String}        serviceEndpoint     The endpoint of the service
-   * @param     {Object}        additionalFields    Any additional fields (optional)
    */
   addService (id, type, serviceEndpoint, additionalFields) {
     if (!this._content.service) {
@@ -127,8 +101,6 @@ class DidDocument {
 
   /**
    * Remove a service
-   *
-   * @param     {String}        id              The id of the key, e.g. "key1"
    */
   removeService (id) {
     const idx = this._content.service.findIndex(e => e.id.endsWith(id))
@@ -141,8 +113,6 @@ class DidDocument {
   /**
    * Set the revocationMethod. This can be of any js object
    * and is determined by the implementer of a revocation module.
-   *
-   * @param     {Object}        methodDescriptor    the object that defines the revocation method
    */
   setRevocationMethod (methodDescriptor) {
     this._content.revocationMethod = methodDescriptor
@@ -150,9 +120,6 @@ class DidDocument {
 
   /**
    * Add a new property
-   *
-   * @param     {String}        propName            The name of the property
-   * @param     {Object}        propValue           The value of the property
    */
   addCustomProperty (propName, propValue) {
     this._content[propName] = propValue
@@ -160,8 +127,6 @@ class DidDocument {
 
   /**
    * Remove a property
-   *
-   * @param     {String}        propName            The name of the property
    */
   removeCustomProperty (propName) {
     delete this._content[propName]
@@ -169,11 +134,6 @@ class DidDocument {
 
   /**
    * Commit all changes and create a new ipfs dag object.
-   *
-   * @param     {Object}        opts                Optional parameters
-   * @param     {Boolean}       noTimestamp         Don't use timestamps if true
-   *
-   * @return    {Promise<CID>}                   The CID of the object
    */
   async commit (opts = {}) {
     if (!this._content.created) {
@@ -193,10 +153,6 @@ class DidDocument {
 
   /**
    * Returns the DID document of a document CID
-   *
-   * @param     {Object}        ipfs            An js-ipfs instance
-   * @param     {String}        documentCid     The CID of the document
-   * @return    {Promise<Object>}                        The DID document as a js object
    */
   static async cidToDocument (ipfs, documentCid) {
     let doc = (await ipfs.dag.get(documentCid)).value

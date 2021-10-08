@@ -1,13 +1,19 @@
-import bodyParser from 'body-parser';
 import cors from 'cors';
 import crypto from 'crypto-js';
 import express from 'express';
 import asyncHandler from 'express-async-handler';
 import { check, validationResult } from 'express-validator/check';
 import { Utils } from './utils';
+import { create } from "ipfs-http-client";
+import { config } from './config';
 
 const app = express();
-const Blockchain = require("./blockchain"); 
+
+const DidDocument = require('./didDocument');
+const ipfs = create(process.env.IPFS_URL);
+
+const CID = require('cids')
+const multihashing = require('multihashing-async')
 
 global.userInfos = {};
 
@@ -15,24 +21,15 @@ global.userInfos = {};
 app.use(cors());
 
 // Add middleware to parse the POST data of the body
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // Add middleware to parse application/json
-app.use(bodyParser.json());
+app.use(express.json());
 
 const didRouter = express.Router();
 
 // Add routes
 app.use(didRouter);
-
-function uuidv4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
-let node_id = uuidv4();
 
 didRouter.post(
   '/docclaim',
@@ -63,49 +60,24 @@ didRouter.post(
 
       let didID = '';
       let { userPub, userName, address1, address2, phone } = req.body;
+      let doc;
 
-      // let tmpID = 'did:kiki:' + crypto.createHash('sha256').update(userPub).digest('base64');
-      console.log('crypto.SHA256 : ', crypto.SHA256(userPub));
-      console.log('crypto.SHA256.toString(crypto.enc.Base64) : ', crypto.SHA256(userPub).toString(crypto.enc.Base64));
-      console.log('crypto.SHA256.toString(crypto.enc.Hex) : ', crypto.SHA256(userPub).toString(crypto.enc.Hex));
-      let tmpID = 'did:kiki:' + crypto.SHA256(userPub).toString(crypto.enc.Hex);
-      console.log('tmpID : ', tmpID);
+      // 01. create DID Document at IPFS
+      const bytesPub = new TextEncoder('utf8').encode(userPub);
+      const hashPub = await multihashing(bytesPub, 'sha2-256');
+      let tmpCid = new CID(1, 'dag-pb', hashPub);
+      let doc = new DidDocument(ipfs, 'kiki', tmpCid);
+    
+      const hexPub = crypto.SHA256(userPub).toString(crypto.enc.Hex);
+      doc.addPublicKey('key-1', 'Secp256k1VerificationKey2018', 'publicKeyHex', hexPub);
+      doc.addAuthentication('Secp256k1SignatureAuthentication2018', 'key-1');
+    
+      tmpCid = await doc.commit();
+      didID = doc.DID;
 
-      // 01. query IPFS with tmpID
-      // 01-1. if there's returned result with this tmpID then just generate claim doc with user's request
-      // 01-2. if not register with new generated tmpID
-    
-      // tmp. didID = tmpID
-      didID = tmpID;
-
-      let didDoc = {};
-      didDoc["@context"] = 'https://www.enventkiki.com/did/v1';
-      didDoc["id"] = didID;
-    
-      let didAuth = {};
-      didAuth["id"] = didID + '#keys-1';
-      didAuth["type"] = '';
-      didAuth["controller"] = '';
-      // base64 encrypt
-      let userPubWords = crypto.enc.Utf8.parse(userPub);
-      let userPubBase64 = crypto.enc.Base64.stringify(userPubWords);
-      didAuth["publicKeyBase58"] = userPubBase64;
-      didDoc["authentication"] = [ didAuth ];
-    
-      let didService = {};
-      // didService["@context"] = 'did:kiki:contexts:example1234';
-      didService["id"] = didID + '#address';
-      didService["type"] = 'addressSharingService';
-      didService["serviceEndpoint"] = "https://www.eventkiki.com/address/12345";
-    
-      didDoc["service"] = [ didService ];
-    
-      console.log('didDoc : ', didDoc);
-    
       // 02. generate claim document
       // 02-1. encrypt with pubKey
       // 02-2. tmp. save address save claim at mysql DB with raw data by didID
-    
       let encUserName = crypto.AES.encrypt(userName, userPub).toString();
       let encAddress1 = crypto.AES.encrypt(address1, userPub).toString();
       let encAddress2 = crypto.AES.encrypt(address2, userPub).toString();
@@ -246,70 +218,3 @@ didRouter.post(
   }) 
 );
 
-
-
-
-app.get('/', function (req, res) {
-  res.send(JSON.stringify(Blockchain.chain));
-});
-
-app.get('/chain', function (req, res){
-  res.send(JSON.stringify(Blockchain.chain));
-});
-
-app.get('/mine', function (req, res){
-  var last_proof;
-  let last_block = Blockchain.last_block();
-  if (last_block == 0) {
-    last_proof = 0;
-  } else {
-    last_proof = last_block.proof;
-  }
-  var proof = Blockchain.proof_of_work(last_proof);
-
-  /*  
-    Add a bitcoin for the miner
-    0 in sender means it is being mined (no sender, sender is the blockchain)
-    recipient is node ID
-  */
-  var index = Blockchain.new_transaction(0, node_id, 1);
-
-  let previous_hash = Blockchain.hash(last_block);
-  let block = Blockchain.new_block (proof, previous_hash);
-
-  res.send(JSON.stringify(block));
-});
-
-app.post('/transactions/new', function (req, res){
-  if (req.query.sender === '' || req.query.ammount ==="" || req.query.recipient === "") {
-    res.send("Missing values");
-    return;
-  } 
-  let index = Blockchain.new_transaction(req.query.sender, req.query.recipient, req.query.ammount)
-  res.send("Transaction will be added to block " + index);
-});
-
-app.post('/nodes/register', function (req, res){
-  var nodes = req.query.nodes;
-  if (nodes === "") {
-    res.send("Provide a list of nodes or leave me alone");
-  }
-  nodes.forEach(element => {
-    Blockchain.register_node(element);
-  });
-  res.send("Nodes will be added to the block ");
-});
-
-app.get('/nodes/resolve', function (req, res){
-  var replaced = Blockchain.resolve_conflicts();
-  res.send(JSON.stringify(Blockchain));
-});
-
-var myArgs = process.argv.slice(2)[0];
-myArgs = '3303';
-
-console.log('Launching bitnode in port: ', myArgs);
-
-var server = app.listen(myArgs, function(){
-
-}); 
