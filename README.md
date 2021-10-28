@@ -169,3 +169,35 @@ function File() {
 }
 File.fullPermissions = 0777;
 ```
+
+## Howto install
+
+### IPFS setting
+
+This project does not focus on IPFS.
+
+Please refer to the following URL how to setup IPFS.
+
+https://labs.eleks.com/2019/03/ipfs-network-data-replication.html
+
+We assume that you already have the private IPFS system on your own system.
+
+### DB setting
+
+We are using MySQL database as storage for personal documents.
+
+Please follow to the next steps.
+1. Copy sample file src/config/.env.example to src/config/.env
+1. Change template environment variables to yours
+
+### Testing
+
+We need to yarn module to run test.
+```
+$ npm install -g yarn
+```
+And run the test command.
+```
+$ yarn test
+```
+
