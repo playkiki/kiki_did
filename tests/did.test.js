@@ -1,5 +1,6 @@
 // kiki/did API TEST Suites
 
+const { expect } = require('chai');
 const faker = require('faker/locale/en');
 let set_userPub   = faker.random.arrayElement([ 'userPub1', 'userPub2', 'userPub3', 'userPub4', 'userPub5' ]);
 let set_userPri   = faker.random.arrayElement([ 'userPri1', 'userPri2', 'userPri3', 'userPri4', 'userPri5' ]);
@@ -14,7 +15,7 @@ let fake_address1 = faker.address.streetName();
 let fake_address2 = faker.address.streetAddress()
 let fake_phone    = faker.phone.phoneNumber();
 
-describe('kiki did API Test - Routes /api/v1/kiki', () => {
+describe('kiki did API Success Test - Routes /api/v1/kiki', () => {
   let didID;
   let claimDoc;
 
@@ -23,8 +24,8 @@ describe('kiki did API Test - Routes /api/v1/kiki', () => {
       const reqData = { userPub: set_userPub, userName: set_userName, address1: set_address1, address2: set_address2, phone: set_phone };
       const res = await global.agent.post(encodeURI(`/api/v1/kiki/docclaim`)).send(reqData);
       console.info('res.body : ', res.body);
-      expect(res.status).toEqual(201);
-      expect(res.body.success).toBe(true);
+      expect(res.status).to.equal(201);
+      expect(res.body.success).to.be.true;
       didID = res.body.result;
     });
   });
@@ -34,8 +35,8 @@ describe('kiki did API Test - Routes /api/v1/kiki', () => {
       const reqData = { userPri: set_userPri, didID: didID };
       const res = await global.agent.post(encodeURI(`/api/v1/kiki/reqclaim`)).send(reqData);
       console.info('res.body : ', res.body);
-      expect(res.status).toEqual(200);
-      expect(res.body.success).toBe(true);
+      expect(res.status).to.equal(200);
+      expect(res.body.success).to.be.true;
       claimDoc = res.body.result;
     });
   });
@@ -45,8 +46,23 @@ describe('kiki did API Test - Routes /api/v1/kiki', () => {
       const reqData = { didID: didID, claimDoc: claimDoc };
       const res = await global.agent.post(encodeURI(`/api/v1/kiki/pubclaim`)).send(reqData);
       console.info('res.body : ', res.body);
-      expect(res.status).toEqual(200);
-      expect(res.body.success).toBe(true);
+      expect(res.status).to.equal(200);
+      expect(res.body.success).to.be.true;
+    });
+  });
+
+});
+
+describe('kiki did API Exception Test - Routes /api/v1/kiki', () => {
+
+  describe('create new document - POST /docclaim', () => {
+    test('create with userName, address1, address2, phone and without userPub get errorcode', async () => {
+      const reqData = { userName: set_userName, address1: set_address1, address2: set_address2, phone: set_phone };
+      const res = await global.agent.post(encodeURI(`/api/v1/kiki/docclaim`)).send(reqData);
+      console.info('res.body : ', res.body);
+      expect(res.status).to.equal(422);
+      expect(res.body.success).to.be.false;
+      expect(res.body.errorcode).to.equal('KDE0001');
     });
   });
 

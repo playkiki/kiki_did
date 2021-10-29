@@ -170,7 +170,9 @@ function File() {
 File.fullPermissions = 0777;
 ```
 
-## Howto install
+## Howto setup and run
+
+Required nodejs v14.0.0 or above because of ipfs-http-client library.
 
 ### IPFS setting
 
@@ -190,13 +192,24 @@ Please follow to the next steps.
 1. Copy sample file src/config/.env.example to src/config/.env
 1. Change template environment variables to yours
 
-### Testing
+### Runing the server
 
-We need to yarn module to run test.
+First install module using npm.
+```
+$ npm install
+```
+We need to yarn module to run test and run server.
 ```
 $ npm install -g yarn
 ```
-And run the test command.
+And then start server
+```
+$ yarn serve
+```
+
+### Testing
+
+Run the test command.
 ```
 $ yarn test
 ```
