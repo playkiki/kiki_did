@@ -198,7 +198,7 @@ First install modules.
 ```
 $ npm install
 ```
-We need to yarn to run test and run server.
+We need yarn to run test and run server.
 ```
 $ npm install -g yarn
 ```
