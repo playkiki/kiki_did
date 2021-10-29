@@ -194,15 +194,15 @@ Please follow to the next steps.
 
 ### Runing the server
 
-First install module using npm.
+First install modules.
 ```
 $ npm install
 ```
-We need to yarn module to run test and run server.
+We need to yarn to run test and run server.
 ```
 $ npm install -g yarn
 ```
-And then start server
+And then start server.
 ```
 $ yarn serve
 ```
