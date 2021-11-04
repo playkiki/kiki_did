@@ -105,3 +105,11 @@ dist
 
 # VSCode file
 .vscode/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# tmp file
+src/tmp.js
+tests/didDocument.test.js
