@@ -174,6 +174,13 @@ File.fullPermissions = 0777;
 
 Required nodejs v14.0.0 or above because of ipfs-http-client library.
 
+Check your node version and download project.
+```
+$ node -v
+
+$ git clone https://github.com/playkiki/kiki_did
+```
+
 ### IPFS setting
 
 This project does not focus on IPFS.
@@ -202,8 +209,10 @@ We need yarn to run test and run server.
 ```
 $ npm install -g yarn
 ```
-And then start server.
+Then build and start server.
 ```
+$ yarn build
+
 $ yarn serve
 ```
 
