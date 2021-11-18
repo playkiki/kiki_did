@@ -20,3 +20,4 @@ see license https://github.com/playkiki/kiki_did/blob/main/LICENSE
 
 ## How to participate
 Register github issue at https://github.com/playkiki/kiki_did/issues 
+test code //
