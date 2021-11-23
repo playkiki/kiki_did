@@ -19,6 +19,7 @@ Decentralized Identity is an emerging concept that gives back control of identit
 see license https://github.com/playkiki/kiki_did/blob/main/LICENSE
 
 ## How to participate
+<<<<<<< HEAD
 Register github issue at https://github.com/playkiki/kiki_did/issues/new/choose
 
 ## Contributing guidelines
@@ -223,3 +224,7 @@ Run the test command.
 $ yarn test
 ```test
 
+=======
+Register github issue at https://github.com/playkiki/kiki_did/issues 
+test code //
+>>>>>>> a3f9ae99f596fbedc4d90e93aaecbe79d89641ce
