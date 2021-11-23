@@ -221,5 +221,5 @@ $ yarn serve
 Run the test command.
 ```
 $ yarn test
-```
+```test
 
