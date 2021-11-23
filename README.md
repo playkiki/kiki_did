@@ -222,7 +222,7 @@ $ yarn serve
 Run the test command.
 ```
 $ yarn test
-```test
+```test test
 
 =======
 Register github issue at https://github.com/playkiki/kiki_did/issues 
