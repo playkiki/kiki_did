@@ -39,7 +39,7 @@ didRouter.post(
         let didID = '';
         let addressYN = false;
         let reviewYN = false;
-        let { userPub, userName, address1, address2, phone, productId, reviewConts, reviewRat } = req.body;
+        let { userPub, userName, address1, address2, phone, productId, reviewCont, reviewRat } = req.body;
 
         if (address1) {
           if (!phone) {
@@ -49,7 +49,7 @@ didRouter.post(
           }
           else addressYN = true;
         }
-        if (reviewConts) {
+        if (reviewCont) {
           if (!productId || !reviewRat) {
             rtnBody.errorcode = 'KDE0001';
             rtnBody.errordetail = 'Req. params not existed';
@@ -66,18 +66,17 @@ didRouter.post(
         const bytesPub = new TextEncoder('utf8').encode(userPub);
 
         const hashPub = await multihashing(bytesPub, 'sha2-256');
+        const hexPub = crypto.SHA256(userPub).toString(crypto.enc.Hex);
   
         let tmpCid = new CID(1, 'dag-pb', hashPub);
         let doc = new DidDocument(ipfs, 'kiki', tmpCid);
-      
-        const hexPub = crypto.SHA256(userPub).toString(crypto.enc.Hex);
-  
+
         doc.addPublicKey('key-1', 'Secp256k1VerificationKey2018', 'publicKeyHex', hexPub);
         doc.addAuthentication('Secp256k1SignatureAuthentication2018', 'key-1');
-      
+
         tmpCid = await doc.commit();
         didID = tmpCid.toString();
-  
+
         // 02. Generate claim document
         // 02-1. Encrypt with pubKey
         // 02-2. Save claim docs to DB with didID
@@ -129,13 +128,18 @@ didRouter.post(
 
         // 02-3. in case of review
         if (reviewYN) {
+          console.debug('---step here---');
           let claimDoc = {};
           claimDoc["id"] = didID;
 
           let encUserName = crypto.AES.encrypt(userName, hexPub).toString();
           let encProductId = crypto.AES.encrypt(productId, hexPub).toString();
-          let encReviewConts = crypto.AES.encrypt(reviewConts, hexPub).toString();
+          let encReviewConts = crypto.AES.encrypt(reviewCont, hexPub).toString();
           let encReviewRat = crypto.AES.encrypt(reviewRat, hexPub).toString();
+          console.debug(encUserName);
+          console.debug(encProductId);
+          console.debug(encReviewConts);
+          console.debug(encReviewRat);
           let claimReviewValue = {};
           claimReviewValue["userName"] = encUserName;
           claimReviewValue["productId"] = encProductId;
