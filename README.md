@@ -189,7 +189,11 @@ Please refer to the following URL how to setup IPFS.
 
 https://labs.eleks.com/2019/03/ipfs-network-data-replication.html
 
-We assume that you already have the private IPFS system on your own system.
+We assume that you already have the private IPFS system on your own.
+
+You can use docker image to build your own privte IPFS easily.
+
+https://hub.docker.com/r/ipfs/go-ipfs/
 
 ### DB setting
 
