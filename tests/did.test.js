@@ -24,7 +24,7 @@ describe('kiki did API Success Test - Routes /api/v1/kiki', () => {
   let didID;
   let claimDoc;
 
-  describe.skip('create new document with address - POST /docclaim', () => {
+  describe('create new document with address - POST /docclaim', () => {
     test('create with userPub, userName, address1, address2 and phone correctly', async () => {
       const reqData = { userPub: setUserPub, userName: setUserName, address1: setAddress1, address2: setAddress2, phone: setPhone };
       const res = await global.agent.post(encodeURI(`/api/v1/kiki/docclaim`)).send(reqData);
@@ -35,7 +35,7 @@ describe('kiki did API Success Test - Routes /api/v1/kiki', () => {
     });
   });
 
-  describe.skip('request document - POST /reqclaim', () => {
+  describe('request document - POST /reqclaim', () => {
     test('request with userPri and didID correctly', async () => {
       const reqData = { userPri: setUserPri, didID: didID };
       const res = await global.agent.post(encodeURI(`/api/v1/kiki/reqclaim`)).send(reqData);
@@ -46,7 +46,7 @@ describe('kiki did API Success Test - Routes /api/v1/kiki', () => {
     });
   });
 
-  describe.skip('publish document - POST /pubclaim', () => {
+  describe('publish document - POST /pubclaim', () => {
     test('publish with didID and claimDoc correctly', async () => {
       const reqData = { didID: didID, claimDoc: claimDoc };
       const res = await global.agent.post(encodeURI(`/api/v1/kiki/pubclaim`)).send(reqData);
