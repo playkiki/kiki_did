@@ -16,15 +16,7 @@ didRouter.post(
     check('userName')
       .not()
       .isEmpty()
-      .withMessage('userName must required'),
-    check('address1')
-      .not()
-      .isEmpty()
-      .withMessage('address1 must required'),
-    check('phone')
-      .not()
-      .isEmpty()
-      .withMessage('phone must required')
+      .withMessage('userName must required')
   ],
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
@@ -45,7 +37,26 @@ didRouter.post(
       const ipfs = IPSClient.create(process.env.IPFS_URL);
     try {
         let didID = '';
-        let { userPub, userName, address1, address2, phone } = req.body;
+        let addressYN = false;
+        let reviewYN = false;
+        let { userPub, userName, address1, address2, phone, productId, reviewCont, reviewRat } = req.body;
+
+        if (address1) {
+          if (!phone) {
+            rtnBody.errorcode = 'KDE0001';
+            rtnBody.errordetail = 'Req. params not existed';
+            return res.status(422).jsonp(rtnBody);
+          }
+          else addressYN = true;
+        }
+        if (reviewCont) {
+          if (!productId || !reviewRat) {
+            rtnBody.errorcode = 'KDE0001';
+            rtnBody.errordetail = 'Req. params not existed';
+            return res.status(422).jsonp(rtnBody);
+          }
+          reviewYN = true;
+        }
 
         const DidDocument = require('./didDocument');                
 
@@ -55,62 +66,115 @@ didRouter.post(
         const bytesPub = new TextEncoder('utf8').encode(userPub);
 
         const hashPub = await multihashing(bytesPub, 'sha2-256');
+        const hexPub = crypto.SHA256(userPub).toString(crypto.enc.Hex);
   
         let tmpCid = new CID(1, 'dag-pb', hashPub);
         let doc = new DidDocument(ipfs, 'kiki', tmpCid);
-      
-        const hexPub = crypto.SHA256(userPub).toString(crypto.enc.Hex);
-  
+
         doc.addPublicKey('key-1', 'Secp256k1VerificationKey2018', 'publicKeyHex', hexPub);
         doc.addAuthentication('Secp256k1SignatureAuthentication2018', 'key-1');
-      
+
         tmpCid = await doc.commit();
         didID = tmpCid.toString();
-  
+
         // 02. Generate claim document
         // 02-1. Encrypt with pubKey
-        // 02-2. Save address save claim at DB with raw data by didID
-        let encUserName = crypto.AES.encrypt(userName, hexPub).toString();
-        let encAddress1 = crypto.AES.encrypt(address1, hexPub).toString();
-        let encAddress2 = crypto.AES.encrypt(address2, hexPub).toString();
-        let encPhone    = crypto.AES.encrypt(phone, hexPub).toString();
-      
-        let claimDoc = {};
-        claimDoc["id"] = didID;
-      
-        let claimValue = {};
-        claimValue["userName"] = encUserName;
-        claimValue["address1"] = encAddress1;
-        claimValue["address2"] = encAddress2;
-        claimValue["phone"] = encPhone;
-        claimDoc["claim"] = claimValue;
-      
-        console.log('claimDoc : ', claimDoc);
-      
-        let claimData = {
-          'didID'  : didID,
-          'claims' : claimDoc
-        };
-      
-        const sequelize = Utils.createConnection();
-        const ClaimDocs = sequelize.import('../models/claim_docs');
-      
-        ClaimDocs.create(claimData)
-          .then(claimDocRtn => {
-            console.log('success to create claim doc');
-            rtnBody.success = true;
-            rtnBody.result = didID;
-            return res.status(201).jsonp(rtnBody);
-          })
-          .catch(err => {
-            console.error('fail to create claim doc : ', err);
-            rtnBody.errorcode = 'KDE0010';
-            rtnBody.errordetail = err;
-            return res.status(401).jsonp(err);
-          })
-          .finally(() => {
-            sequelize.close();
-          });
+        // 02-2. Save claim docs to DB with didID
+
+        // 02-3. in case of address
+        if (addressYN) {
+          let claimDoc = {};
+          claimDoc["id"] = didID;
+
+          let encUserName = crypto.AES.encrypt(userName, hexPub).toString();
+          let encAddress1 = crypto.AES.encrypt(address1, hexPub).toString();
+          let encAddress2 = crypto.AES.encrypt(address2, hexPub).toString();
+          let encPhone    = crypto.AES.encrypt(phone, hexPub).toString();
+        
+          let claimAddressValue = {};
+          claimAddressValue["userName"] = encUserName;
+          claimAddressValue["address1"] = encAddress1;
+          claimAddressValue["address2"] = encAddress2;
+          claimAddressValue["phone"] = encPhone;
+          claimDoc["claim"] = claimAddressValue;
+        
+          console.log('claimAddressDoc : ', claimDoc);
+        
+          let claimData = {
+            'didID'  : didID,
+            'claims' : claimDoc
+          };
+        
+          const sequelize = Utils.createConnection();
+          const ClaimDocs = sequelize.import('../models/claim_docs');
+        
+          ClaimDocs.create(claimData)
+            .then(claimDocRtn => {
+              console.log('success to create claim doc');
+              rtnBody.success = true;
+              rtnBody.result = didID;
+              return res.status(201).jsonp(rtnBody);
+            })
+            .catch(err => {
+              console.error('fail to create claim doc : ', err);
+              rtnBody.errorcode = 'KDE0010';
+              rtnBody.errordetail = err;
+              return res.status(401).jsonp(err);
+            })
+            .finally(() => {
+              sequelize.close();
+            });
+        }
+
+        // 02-3. in case of review
+        if (reviewYN) {
+          console.debug('---step here---');
+          let claimDoc = {};
+          claimDoc["id"] = didID;
+
+          let encUserName = crypto.AES.encrypt(userName, hexPub).toString();
+          let encProductId = crypto.AES.encrypt(productId, hexPub).toString();
+          let encReviewConts = crypto.AES.encrypt(reviewCont, hexPub).toString();
+          let encReviewRat = crypto.AES.encrypt(reviewRat, hexPub).toString();
+          console.debug(encUserName);
+          console.debug(encProductId);
+          console.debug(encReviewConts);
+          console.debug(encReviewRat);
+          let claimReviewValue = {};
+          claimReviewValue["userName"] = encUserName;
+          claimReviewValue["productId"] = encProductId;
+          claimReviewValue["reviewConts"] = encReviewConts;
+          claimReviewValue["reviewRat"] = encReviewRat;
+          claimReviewValue["reviewDate"] = new Date();
+          claimDoc["claim"] = claimReviewValue;
+        
+          console.log('claimReviewDoc : ', claimDoc);
+        
+          let claimData = {
+            'didID'  : didID,
+            'claims' : claimDoc
+          };
+        
+          const sequelize = Utils.createConnection();
+          const ClaimDocs = sequelize.import('../models/claim_docs');
+        
+          ClaimDocs.create(claimData)
+            .then(claimDocRtn => {
+              console.log('success to create claim doc');
+              rtnBody.success = true;
+              rtnBody.result = didID;
+              return res.status(201).jsonp(rtnBody);
+            })
+            .catch(err => {
+              console.error('fail to create claim doc : ', err);
+              rtnBody.errorcode = 'KDE0010';
+              rtnBody.errordetail = err;
+              return res.status(401).jsonp(err);
+            })
+            .finally(() => {
+              sequelize.close();
+            });
+        }
       } catch (exp) {
         console.error('fail to create claim doc : ', exp);
         rtnBody.errorcode = 'KDE0099';

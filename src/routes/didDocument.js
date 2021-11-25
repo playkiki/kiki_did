@@ -155,7 +155,7 @@ class DidDocument {
    * Returns the DID document of a document CID
    */
   static async cidToDocument (ipfs, documentCid) {
-    let doc = (await ipfs.dag.get(documentCid)).value;
+    let doc = (await ipfs.dag.get(documentCid, { path: '/' })).value;
     // If genesis document replace placeholder identifier with cid
     if (doc.id.includes(DID_PLACEHOLDER)) {
       const re = new RegExp(DID_PLACEHOLDER, 'gi');
