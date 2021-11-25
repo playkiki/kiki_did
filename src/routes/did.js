@@ -41,8 +41,22 @@ didRouter.post(
         let reviewYN = false;
         let { userPub, userName, address1, address2, phone, productId, reviewConts, reviewRat } = req.body;
 
-        if (address1) addressYN = true;
-        if (reviewConts) reviewYN = true;
+        if (address1) {
+          if (!phone) {
+            rtnBody.errorcode = 'KDE0001';
+            rtnBody.errordetail = 'Req. params not existed';
+            return res.status(422).jsonp(rtnBody);
+          }
+          else addressYN = true;
+        }
+        if (reviewConts) {
+          if (!productId || !reviewRat) {
+            rtnBody.errorcode = 'KDE0001';
+            rtnBody.errordetail = 'Req. params not existed';
+            return res.status(422).jsonp(rtnBody);
+          }
+          reviewYN = true;
+        }
 
         const DidDocument = require('./didDocument');                
 
