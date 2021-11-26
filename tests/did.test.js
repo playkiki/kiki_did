@@ -127,6 +127,17 @@ describe('kiki did API Exception Test - Routes /api/v1/kiki', () => {
   });
 
   describe('publish document - POST /pubclaim', () => {
+    test('publish without claimDoc and didID correctly', async () => {
+      const reqData = { claimDoc: setReviewRat };
+      const res = await global.agent.post(encodeURI(`/api/v1/kiki/pubclaim`)).send(reqData);
+      console.info('res.body : ', res.body);
+      expect(res.status).to.equal(422);
+      expect(res.body.success).to.be.false;
+      expect(res.body.errorcode).to.equal('KDE0001');
+    });
+  });
+
+  describe('publish document - POST /pubclaim', () => {
     test('publish with claimDoc without didID correctly', async () => {
       const reqData = { claimDoc: setReviewRat };
       const res = await global.agent.post(encodeURI(`/api/v1/kiki/pubclaim`)).send(reqData);
