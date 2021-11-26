@@ -14,6 +14,9 @@ Decentralized Identity is an emerging concept that gives back control of identit
 ## W3C standards
 - [Decentralized Identifiers] https://www.w3.org/TR/did-core/
 
+## DEMO page
+- https://www.wsl-store.com/did_product_detail.php?num=171
+
 ## License 
 
 see license https://github.com/playkiki/kiki_did/blob/main/LICENSE
