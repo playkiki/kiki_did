@@ -364,6 +364,7 @@
                     </div>
                   </a>
                 </div>
+                <div class="text-right my-3"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeReviewModal">Write Review</button></div>
 
                 <!-- <div class="pb-2 my-4 border-bottom d-md-flex justify-content-between">
                   <h5>Reviews (150)</h5>
@@ -1245,6 +1246,31 @@
           <button type="button" class="btn btn-lg btn-primary rounded-circle border-0 mr-2" style="width: 3rem; height: 3rem; background-color: #55ACEE;"><i class="fab fa-twitter" title="Twitter"></i></button>
           <button type="button" class="btn btn-lg btn-primary rounded-circle border-0 mr-2" style="width: 3rem; height: 3rem; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);"><i class="fab fa-instagram" title="Instagram"></i></button>
           <button type="button" class="btn btn-lg btn-primary rounded-circle border-0" style="width: 3rem; height: 3rem; background-color: #fcee2d;"><i class="fas fa-comment" style="color: #3b1d1f;" title="KakaoTalk"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" id="writeReviewModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">KiKi ID</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" class="form-control-plaintext" readonly value="Reviewer ID">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
