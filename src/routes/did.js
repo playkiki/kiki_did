@@ -104,26 +104,17 @@ didRouter.post(
             'didID'  : didID,
             'claims' : claimDoc
           };
-        
-          const sequelize = Utils.createConnection();
-          const ClaimDocs = sequelize.import('../models/claim_docs');
-        
-          ClaimDocs.create(claimData)
-            .then(claimDocRtn => {
-              console.log('success to create claim doc');
-              rtnBody.success = true;
-              rtnBody.result = didID;
-              return res.status(201).jsonp(rtnBody);
-            })
-            .catch(err => {
-              console.error('fail to create claim doc : ', err);
-              rtnBody.errorcode = 'KDE0010';
-              rtnBody.errordetail = err;
-              return res.status(401).jsonp(err);
-            })
-            .finally(() => {
-              sequelize.close();
-            });
+
+          let errorMsg = await createClaimDoc(claimData);
+          if (errorMsg) {
+            rtnBody.errorcode = 'KDE0010';
+            rtnBody.errordetail = errorMsg;
+            return res.status(401).jsonp(err);
+          } else {
+            rtnBody.success = true;
+            rtnBody.result = didID;
+            return res.status(201).jsonp(rtnBody);
+          }
         }
 
         // 02-3. in case of review
@@ -151,25 +142,16 @@ didRouter.post(
             'claims' : claimDoc
           };
         
-          const sequelize = Utils.createConnection();
-          const ClaimDocs = sequelize.import('../models/claim_docs');
-        
-          ClaimDocs.create(claimData)
-            .then(claimDocRtn => {
-              console.log('success to create claim doc');
-              rtnBody.success = true;
-              rtnBody.result = didID;
-              return res.status(201).jsonp(rtnBody);
-            })
-            .catch(err => {
-              console.error('fail to create claim doc : ', err);
-              rtnBody.errorcode = 'KDE0010';
-              rtnBody.errordetail = err;
-              return res.status(401).jsonp(err);
-            })
-            .finally(() => {
-              sequelize.close();
-            });
+          let errorMsg = await createClaimDoc(claimData);
+          if (errorMsg) {
+            rtnBody.errorcode = 'KDE0010';
+            rtnBody.errordetail = errorMsg;
+            return res.status(401).jsonp(err);
+          } else {
+            rtnBody.success = true;
+            rtnBody.result = didID;
+            return res.status(201).jsonp(rtnBody);
+          }
         }
       } catch (exp) {
         console.error('fail to create claim doc : ', exp);
@@ -223,14 +205,14 @@ didRouter.post(
         raw : true
       })
         .then(claimDocRtn => {
-          console.log('success to create claim doc : ', claimDocRtn.claims);
+          console.log('success to find claim doc : ', claimDocRtn.claims);
           // return res.status(200).send(JSON.stringify(claimDocRtn.claims));
           rtnBody.success = true;
           rtnBody.result = claimDocRtn.claims;
           return res.status(200).jsonp(rtnBody);
         })
         .catch(err => {
-          console.error('fail to create claim doc : ', err);
+          console.error('fail to find claim doc : ', err);
           rtnBody.errorcode = 'KDE0010';
           rtnBody.errordetail = err;
           return res.status(404).jsonp(rtnBody);
@@ -322,3 +304,20 @@ didRouter.post(
   }) 
 );
 
+async function createClaimDoc(claimData) {
+  const sequelize = Utils.createConnection();
+  const ClaimDocs = sequelize.import('../models/claim_docs');
+
+  await ClaimDocs.create(claimData)
+    .then(claimDocRtn => {
+      console.log('success to create claim doc');
+      return;
+    })
+    .catch(err => {
+      console.error('fail to create claim doc : ', err);
+      return err;
+    })
+    .finally(() => {
+      sequelize.close();
+    });
+}
