@@ -93,4 +93,15 @@ describe('kiki did API Exception Test - Routes /api/v1/kiki', () => {
     });
   });
 
+  describe('create new document - POST /docclaim', () => {
+    test('create with userName, productId without reviewCont get errorcode', async () => {
+      const reqData = { userName: setUserName, productId: setProductId };
+      const res = await global.agent.post(encodeURI(`/api/v1/kiki/docclaim`)).send(reqData);
+      console.info('res.body : ', res.body);
+      expect(res.status).to.equal(422);
+      expect(res.body.success).to.be.false;
+      expect(res.body.errorcode).to.equal('KDE0001');
+    });
+  });
+
 });
