@@ -1,0 +1,1263 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>WSL</title>
+</head>
+
+<body>
+  <header class="border-bottom">
+    <div class="container">
+      <div class="topbar text-md-right my-2">
+        <ul class="list-inline my-0">
+          <li class="list-inline-item mr-0"><button class="btn btn-sm btn-link py-0 px-md-3 border-top-0 border-left-0 border-bottom-0 border" aria-label="View shopping cart"><i aria-hidden="true" class="fas fa-shopping-bag" title="장바구니"></i></button></li>
+          <li class="list-inline-item mr-0"><a class="btn btn-sm btn-link py-0 px-md-3 border-top-0 border-left-0 border-bottom-0 border" href="#signInModal" data-toggle="modal" data-target="#signInModal"><i class="far fa-user"></i> <span id="00_001">로그인</span></a></li>
+          <li class="list-inline-item mr-0">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-link py-0 px-md-3 dropdown-toggle border-top-0 border-left-0 border-bottom-0 border" id="myProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-user"></i> My Page</button>
+              <div class="dropdown-menu shadow-sm" aria-labelledby="myProfile">
+                <a class="dropdown-item" href="#"><span id="00_033">회원 정보</span></a>
+                <a class="dropdown-item" href="#"><span id="00_034">찜</span></a>
+                <a class="dropdown-item" href="#"><span id="00_035">상품 문의 내역</span></a>
+                <a class="dropdown-item" href="#"><span id="00_036">구매 문의 내역</span></a>
+                <a class="dropdown-item" href="#"><span id="00_037">로그아웃</span></a>
+              </div>
+          </li>
+          <li class="list-inline-item mr-0"><a href="sign-up-01.html" class="btn btn-sm btn-link py-0 px-md-3 border-top-0 border-left-0 border-bottom-0 border"><span id="00_002">회원가입</span></a></li>
+          <li class="list-inline-item mr-0">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-link dropdown-toggle" id="langSelect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+              <div class="dropdown-menu shadow-sm" aria-labelledby="langSelect">
+                <a class="dropdown-item active" href="#">한국어</a>
+                <a class="dropdown-item" href="#">English</a>
+                <a class="dropdown-item" href="#">日本語</a>
+              </div>
+          </li>
+        </ul>
+      </div>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-white mb-3">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/img/logo.png" width="69" height="62" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mt-4 mt-lg-0" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto ml-md-3 ml-xl-6">
+            <li class="nav-item ml-lg-5 ml-xl-7 active">
+              <a class="nav-link text-uppercase" href="#">Sample <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ml-lg-5 ml-xl-7">
+              <a class="nav-link text-uppercase" href="#">Standard</a>
+            </li>
+            <li class="nav-item ml-lg-5 ml-xl-7">
+              <a class="nav-link text-uppercase" href="#">Promotion</a>
+            </li>
+            <li class="nav-item dropdown ml-lg-5 ml-xl-7">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                WSL Story
+              </a>
+              <div class="dropdown-menu border-primary shadow" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#"><span id="00_003">상품문의</span></a>
+                <a class="dropdown-item" href="#"><span id="00_004">리뷰</span></a>
+                <a class="dropdown-item active" href="#"><span id="00_005">공지사항</span></a>
+                <a class="dropdown-item" href="#"><span id="00_006">자주 묻는 질문</span></a>
+                <a class="dropdown-item" href="#"><span id="00_007">상담예약</span></a>
+                <a class="dropdown-item" href="#"><span id="00_008">갤러리</span></a>
+              </div>
+            </li>
+            <li class="nav-item ml-lg-5 ml-xl-7">
+              <a class="nav-link text-uppercase" href="#">Event</a>
+            </li>
+          </ul>
+          <button class="btn btn-lg btn-link text-dark px-0 pl-md-3 pl-lg-0" id="searchBarTrigger" type="button" data-toggle="collapse" data-target="#searchBar" aria-expanded="false" aria-controls="searchBar">
+            <i class="fas fa-search fa-lg"></i>
+            <i class="fas fa-times fa-lg" style="display: none;"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <div class="collapse border-top" id="searchBar" aria-labelledby="searchBar">
+      <div class="container pt-5 pb-4">
+        <form>
+          <div class="input-group input-group-lg mb-3 search-form">
+            <input type="text" class="form-control border-0 rounded-0" id="00_009" placeholder="검색어를 입력해 주세요" aria-label="Search" aria-describedby="btnSearch">
+            <div class="input-group-append">
+              <button class="btn btn-outline-dark border-0 rounded-0" type="button" id="btnSearch" data-toggle="modal" data-target="#searchErrorModal"><i class="fas fa-search fa-lg"></i><span class="sr-only">Search</span></button>
+            </div>
+          </div>
+
+          <h6 class="mb-3" id="00_010">추천검색어</h6>
+          <button class="btn btn-light rounded-pill mr-3 mb-3">#제화가죽</button>
+          <button class="btn btn-light rounded-pill mr-3 mb-3">#프라다원단</button>
+          <button class="btn btn-light rounded-pill mr-3 mb-3">#세일</button>
+          <button class="btn btn-light rounded-pill mr-3 mb-3">#구찌</button>
+      </div>
+      </form>
+    </div>
+  </header>
+
+  <main role="main">
+    <div class="container my-5 my-lg-9" id="productDetail">
+
+      <div class="d-lg-flex justify-content-start mb-5">
+        <h1 class="text-uppercase font-weight-bold mr-lg-4">Standard</h1>
+        <h2 class="h3 pt-lg-2 mr-lg-3 border-left pl-3 pl-lg-4 border-primary">멀베리 바이올렛슈렁큰</h2>
+        <button type="button" class="btn btn-lg btn-link" href="#shareModal" data-toggle="modal" data-target="#shareModal"><i class="fas fa-share-alt fa-2x"></i></button>
+        <button type="button" class="btn btn-lg btn-link favorite"><i class="far fa-heart fa-2x"></i></button>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8">
+
+          <ul class="nav nav-tabs nav-fill mb-3" id="productTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link px-0 py-3" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="Detail" aria-selected="true">Detail</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0 py-3 active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="profile" aria-selected="false">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0 py-3" id="qna-tab" data-toggle="tab" href="#qna" role="tab" aria-controls="qna" aria-selected="false">Q&A</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link px-0 py-3" id="checkUp-tab" data-toggle="tab" href="#checkUp" role="tab" aria-controls="checkUps" aria-selected="false">Check Up</a>
+            </li> -->
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane" id="detail" role="tabpanel" aria-labelledby="detail-tab">
+              <div class="overflow-auto mb-5">
+                <img class="img-fluid" src="assets/img/product-detail.jpg" alt="Product Detail">
+              </div>
+              <h5 class="border-bottom border-primary pb-2 mb-4">Standard 라인의 유사한 상품 (00개)</h5>
+
+              <div class="carousel slide carousel-product pt-3 pb-5 mb-3 mb-lg-0 carouselProductYouMayLike" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselProductYouMayLike" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselProductYouMayLike" data-slide-to="1"></li>
+                  <li data-target="#carouselProductYouMayLike" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner px-xl-5">
+                  <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3 active" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3 active" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3 active" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselProductYouMayLike" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselProductYouMayLike" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="tab-pane active" id="review" role="tabpanel" aria-labelledby="review-tab">
+              <div class="overflow-auto mb-5">
+                <div class="list-group list-group-flush">
+                  <a href="#" class="list-group-item list-group-item-action">
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    <div class="d-flex w-100 justify-content-between">
+                      <small class="text-muted">2021-11-26 04:31</small>
+                      <small class="text-muted">By DID: dfgdfg</small>
+                    </div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    <div class="d-flex w-100 justify-content-between">
+                      <small class="text-muted">2021-11-26 04:31</small>
+                      <small class="text-muted">By DID: dfgdfg</small>
+                    </div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    <div class="d-flex w-100 justify-content-between">
+                      <small class="text-muted">2021-11-26 04:31</small>
+                      <small class="text-muted">By DID: dfgdfg</small>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- <div class="pb-2 my-4 border-bottom d-md-flex justify-content-between">
+                  <h5>Reviews (150)</h5>
+                  <div>
+                    <a href="#" class="px-3 border-right">Most Recent</a><a href="#" class="pl-3 pr-lg-3 text-muted">Ratings</a>
+                  </div>
+                </div>
+                <div class="row border-bottom mt-3 mx-lg-0">
+                  <div class="col-md-3 col-lg-2 mb-3">
+                    <ul class="list-inline">
+                      <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star text-muted"></i></li>
+                    </ul>
+                    <div class="text-muted">2020.02.25</div>
+                    구매자
+                  </div>
+                  <div class="col-md-3 col-lg-2"><img class="img-fluid mb-3 mr-3" src="https://via.placeholder.com/800" alt="Product image 1"></div>
+                  <div class="col-md-6 col-lg-8">
+                    <p>인조 가죽이고 다른 한쪽은 실리콘을 얇게 펴바른 듯한 촉감의 논슬립 패드로 되어 있어 사용감이 좋은 젶품이라
+                      다양한 제품에 활용하기 좋았습니다. 인조 가죽이고 다른 한쪽은 실리콘을 얇게 펴바른 듯한 촉감의 논슬립 패드로
+                      되어 있어 사용감이 좋은 젶품이라 다양한 제품에 활용하기 좋았습니다. <a href="#reviewModal" data-toggle="modal" data-target="#reviewModal"><u>더보기</u></a></p>
+                  </div>
+                </div>
+
+                <div class="row border-bottom mt-3 mx-lg-0">
+                  <div class="col-md-3 col-lg-2 mb-3">
+                    <ul class="list-inline">
+                      <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                      <li class="list-inline-item m-0"><i class="fas fa-star text-muted"></i></li>
+                    </ul>
+                    <div class="text-muted">2020.02.25</div>
+                    구매자
+                  </div>
+                  <div class="col-md-3 col-lg-2"><img class="img-fluid mb-3 mr-3" src="https://via.placeholder.com/800" alt="Product image 1"></div>
+                  <div class="col-md-6 col-lg-8">
+                    <p><a href="#reviewModal" data-toggle="modal" data-target="#reviewModal">인조 가죽이고 다른 한쪽은 실리콘을 얇게 펴바른 듯한 촉감의 논슬립 패드로 되어 있어 다양한 제품에 활용하기 좋았습니다.</a></p>
+                  </div>
+                </div>
+
+                <nav aria-label="Page navigation" class="my-4">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true"><i class="fas fa-angle-left" title=""></i></span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active" aria-current="page">
+                      <span class="page-link">
+                        2
+                        <span class="sr-only">(current)</span>
+                      </span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true"><i class="fas fa-angle-right" title=""></i></span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav> -->
+              </div>
+
+              <h5 class="border-bottom border-primary pb-2 mb-4">Standard 라인의 유사한 상품 (00개)</h5>
+
+              <div class="carousel slide carousel-product pt-3 pb-5 mb-3 mb-lg-0 carouselProductYouMayLike" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselProductYouMayLike" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselProductYouMayLike" data-slide-to="1"></li>
+                  <li data-target="#carouselProductYouMayLike" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner px-xl-5">
+                  <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3 active" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <div class="row justify-content-center">
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3 active" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <div class="row justify-content-center">
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3 active" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                      <div class="col-4 col-md-2 col-xl-2 text-center">
+                        <figure>
+                          <a class="d-block mb-3" href="#">
+                            <img class="img-fluid rounded-circle mb-3" src="https://via.placeholder.com/800" alt="Product image 1">
+                            <figcaption>
+                              상품명표기<br>
+                              80,000 원
+                            </figcaption>
+                          </a>
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselProductYouMayLike" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselProductYouMayLike" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+
+            </div>
+
+            <div class="tab-pane" id="qna" role="tabpanel" aria-labelledby="qna-tab">
+              <div class="bg-light p-3 mb-4">
+                <h5 class="mb-4">제품문의하기</h5>
+                <form>
+                  <div class="form-row">
+                    <div class="col-lg-8 mb-3">
+                      <input type="text" class="form-control rounded-0" placeholder="제목을 입력하세요.">
+                    </div>
+                    <div class="col-lg-4 mb-3">
+                      <div class="custom-file">
+                        <input type="file" id="inputFile" name="inputFile" class="custom-file-input">
+                        <label class="custom-file-label rounded-0" for="inputFile" data-browse="파일 선택">파일 선택</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control rounded-0" id="qnaTextarea" rows="10" placeholder="문의내용을 입력하세요. 빠른 시간내에 답변드리겠습니다."></textarea>
+                  </div>
+                </form>
+                <div class="d-md-flex justify-content-between">
+                  <div>
+                    <div class="d-inline-block mr-2 mb-3 mb-md-0">파일명.jpg
+                      <button type="button" class="close ml-1" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="d-inline-block mb-3 mb-md-0">파일명.jpg
+                      <button type="button" class="close ml-1" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  </div>
+                  <button class="btn btn-white px-lg-3 border-primary">문의하기</button>
+                </div>
+              </div>
+
+              <h5 class="mb-3">나의 문의내용 (12)</h5>
+              <div class="accordion mb-4" id="accordionQna">
+                <div class="card rounded-0 border-right-0 border-left-0">
+                  <div class="card-header bg-white p-0" id="headingOne">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link w-100 p-0 text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <div class="row">
+                          <div class="col-lg-1 mt-2"><span class="h4 font-weight-bold pl-3 d-none d-lg-block">Q</span></div>
+                          <div class="col-lg-11 my-3">
+                            <span class="badge badge-accent rounded-0 mr-2">N</span> 가죽원단 문의 합니다.
+                          </div>
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionQna">
+                    <div class="card-body p-0">
+
+                      <div class="row">
+                        <div class="col-lg-1"></div>
+
+                        <div class="col-lg-11 my-3">
+
+                          <div class="row no-gutters">
+                            <div class="col-lg-10">
+                              <p class="qna-concern">문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용</p>
+
+                              <div class="qna-concern-edit" style="display: none;">
+                                <div class="form-group">
+                                  <textarea class="form-control rounded-0" rows="5">문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용</textarea>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-primary mb-3">확인</button>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-2 text-right">
+                              <button type="button" class="btn btn-sm btn-white border mb-3 btn-qna-edit">내용 수정</button>
+                            </div>
+                          </div>
+
+                          <div class="border-top pt-3">
+                            <a href="#"><span class="text-muted mr-2">파일명.jpg</span></a>
+                            <a href="#"><span class="text-muted">파일명.jpg</span></a>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <div class="row border-top bg-light p-3 p-lg-0">
+                        <div class="col-lg-1 my-3"><span class="h4 font-weight-bold pl-3 mr-3">A</span></div>
+                        <div class="col-lg-11 my-3">
+
+                          <div class="row">
+                            <div class="col-lg-10">
+                              <p>가죽원단 문의 합니다.에 대한 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용</p>
+                            </div>
+                          </div>
+                          <span class="text-muted">2020.02.25 15:52 관리자</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card rounded-0 border-right-0 border-left-0">
+                  <div class="card-header bg-white p-0" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link w-100 p-0 text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <div class="row">
+                          <div class="col-lg-1 mt-2"><span class="h4 font-weight-bold pl-3 d-none d-lg-block">Q</span></div>
+                          <div class="col-lg-11 my-3">
+                            <span class="badge badge-primary rounded-0 px-3 mr-2">답변완료</span> 가죽원단 문의 합니다.
+                          </div>
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionQna">
+                    <div class="card-body p-0">
+
+                      <div class="row">
+                        <div class="col-lg-1"></div>
+
+                        <div class="col-lg-11 my-3">
+
+                          <div class="row no-gutters">
+                            <div class="col-lg-10">
+                              <p class="qna-concern">문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용</p>
+
+                              <div class="qna-concern-edit" style="display: none;">
+                                <div class="form-group">
+                                  <textarea class="form-control rounded-0" rows="5">문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용</textarea>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-primary mb-3">확인</button>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="border-top pt-3">
+                            <span class="text-muted mr-2">파일명.jpg</span>
+                            <span class="text-muted">파일명.jpg</span>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <div class="row border-top bg-light p-3 p-lg-0">
+                        <div class="col-lg-1 my-3"><span class="h4 font-weight-bold pl-3 mr-3">A</span></div>
+                        <div class="col-lg-11 my-3">
+
+                          <div class="row">
+                            <div class="col-lg-10">
+                              <p>가죽원단 문의 합니다.에 대한 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내용 답변내</p>
+                            </div>
+                          </div>
+                          <span class="text-muted">2020.02.25 15:52 관리자</span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card rounded-0 border-right-0 border-left-0">
+                  <div class="card-header bg-white p-0" id="headingThree">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link w-100 p-0 text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <div class="row">
+                          <div class="col-lg-1 mt-2"><span class="h4 font-weight-bold pl-3 d-none d-lg-block">Q</span></div>
+                          <div class="col-lg-11 my-3">
+                            <span class="badge badge-secondary rounded-0 px-2 mr-2">미완료</span> 가죽원단 문의 합니다.
+                          </div>
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionQna">
+                    <div class="card-body p-0">
+
+                      <div class="row">
+                        <div class="col-lg-1"></div>
+
+                        <div class="col-lg-11 my-3">
+
+                          <div class="row no-gutters">
+                            <div class="col-lg-10">
+                              <p class="qna-concern">문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용</p>
+
+                              <div class="qna-concern-edit" style="display: none;">
+                                <div class="form-group">
+                                  <textarea class="form-control rounded-0" rows="5">문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용 문의내용</textarea>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-primary mb-3">확인</button>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-2 text-right">
+                              <button type="button" class="btn btn-sm btn-white border mb-3 btn-qna-edit">내용 수정</button>
+                            </div>
+                          </div>
+
+                          <div class="border-top pt-3">
+                            <span class="text-muted mr-2">파일명.jpg</span>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <nav aria-label="Page navigation" class="my-4">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true"><i class="fas fa-angle-left" title=""></i></span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active" aria-current="page">
+                    <span class="page-link">
+                      2
+                      <span class="sr-only">(current)</span>
+                    </span>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true"><i class="fas fa-angle-right" title=""></i></span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <!-- <div class="tab-pane" id="checkUp" role="tabpanel" aria-labelledby="checkUp-tab">
+              <h5 class="border-bottom mt-4 pb-2">결제안내</h5>
+              <p class="word-break-keep-all pr-lg-5">고액결제의 경우 안전을 위해 카드사에서 확인전화를 드릴 수도 있습니다. 확인과정에서 도난 카드의 사용이나 타인 명의의 주문등 정상적인 주문이 아니라고
+                판단될 경우 임의로 주문을 보류 또는 취소할 수 있습니다.</p>
+              <p class="word-break-keep-all pr-lg-5">무통장 입금은 상품 구매 대금은 PC뱅킹, 인터넷뱅킹, 텔레뱅킹 혹은 가까운 은행에서 직접 입금하시면 됩니다.
+                주문시 입력한 입금자명과 실제입금자의 성명이 반드시 일치하여야 하며, 7일 이내로 입금을 하셔야 하며 입금되지 않은 주문은 자동취소 됩니다.</p>
+              <h5 class="border-bottom mt-4 pb-2">결제안내</h5>
+              <p class="word-break-keep-all mb-5 pr-lg-5">배송 방법 : 택배<br>
+                배송 지역 : 전국지역<br>
+                배송 비용 : 고정배송비 : 주문 금액에 상관없이 배송비는 6,000원입니다.<br>
+                배송 기간 : 3일 ~ 7일<br>
+                산간벽지나 도서지방은 별도의 추가금액을 지불하셔야 하는 경우가 있습니다.<br>
+                고객님께서 주문하신 상품은 입금 확인후 배송해 드립니다.다만,상품종류에 따라서 상품의 배송이 다소 자연될 수 있습니다.</p>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="col-lg-4 bg-light p-3">
+          <table class="table table-borderless mb-4">
+            <tr>
+              <th class="text-uppercase" scope="col">상품코드</th>
+              <td>EE19SDEFEF5441C</td>
+            </tr>
+            <tr>
+              <th class="text-uppercase" scope="col">Type</th>
+              <td>Natural</td>
+            </tr>
+            <tr>
+              <th class="text-uppercase" scope="col">Spec</th>
+              <td>
+                <!-- <ul class="list-unstyled mb-0">
+                  <li><span class="border-right pr-2 mr-1">두께</span> 0.8~1.0</li>
+                  <li><span class="border-right pr-2 mr-1">강도</span> Loose</li>
+                  <li><span class="border-right pr-2 mr-1">광택</span> Natural</li>
+                </ul> -->
+                <ul class="list-unstyled mb-0">
+                  <li><span class="border-right pr-2 mr-1">small</span> <s class="text-muted">80000</s> 90,000원</li>
+                  <li><span class="border-right pr-2 mr-1">Midium</span> <s class="text-muted">80000</s> 90,000원</li>
+                  <li><span class="border-right pr-2 mr-1">Large</span> <s class="text-muted">80000</s> 90,000원</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th class="text-uppercase" scope="col">상품가격</th>
+              <td><strong class="h5 font-weight-bold">80,000 원</strong></td>
+            </tr>
+            </tbody>
+          </table>
+
+          <h4 class="text-uppercase h6 border-bottom pb-2">Color & Pattern</h4>
+          <ul class="list-inline mx-lg-3 my-3 d-flex justify-content-between text-center">
+            <li class="list-inline-item">
+              <figure>
+                <img class="w-100 img-fluid rounded-circle" src="https://via.placeholder.com/800" alt="Color & Pattern">
+                <figcaption><small class="text-secondary">밝은조도</small></figcaption>
+              </figure>
+            </li>
+            <li class="list-inline-item">
+              <figure>
+                <img class="w-100 img-fluid rounded-circle" src="https://via.placeholder.com/800" alt="Color & Pattern">
+                <figcaption><small class="text-secondary">어두운조도</small></figcaption>
+              </figure>
+            </li>
+            <li class="list-inline-item">
+              <figure>
+                <img class="w-100 img-fluid rounded-circle" src="https://via.placeholder.com/800" alt="Color & Pattern">
+                <figcaption><small class="text-secondary">뒷면</small></figcaption>
+              </figure>
+            </li>
+            <li class="list-inline-item">
+              <figure>
+                <img class="w-100 img-fluid rounded-circle" src="https://via.placeholder.com/800" alt="Color & Pattern">
+                <figcaption><small class="text-secondary">패턴</small></figcaption>
+              </figure>
+            </li>
+          </ul>
+
+          <div class="form-group row mx-xl-3">
+            <label class="col-xl-2 col-form-label text-uppercase">Size</label>
+            <div class="col-xl-10 text-center">
+              <select class="custom-select rounded-0 mb-1">
+                <option selected>상품사이즈를 선택해주세요.</option>
+                <option value="1">Small (18~22평) 80,000원</option>
+                <option value="2">Medium (22~26평) 96,000원</option>
+                <option value="3" disabled>Large (26~30평) 일시품절</option>
+              </select>
+              <small class="d-block text-muted mb-3">구매 전 색상과 특성에 대한 확인이 필요하신가요?<br>
+                먼저 샘플을 신청하여 확인해보세요.</small>
+              <button type="button" class="btn btn-sm btn-block border-primary bg-white">샘플 신청하기 (1평ㅣ1,500원)</button>
+            </div>
+          </div>
+          <div class="border-top border-bottom pt-3 mx-xl-3 mb-3">
+            <div class="row mb-3">
+              <div class="col">
+                <label class="text-muted">샘플 <a class="mr-2" data-toggle="tooltip" data-placement="top" title="샘플은 1장씩 한번만 구매 가능합니다."><i class="fas fa-info-circle"></i></a></label>
+                <input type="number" class="form-control rounded-0 d-inline-block text-center px-0 ml-2" value="1" style="width: 3.5rem;" disabled>
+              </div>
+              <div class="col text-right">
+                <input type="text" class="form-control bg-light border-0 d-inline-block px-0 text-right" value="9,999,999 원" style="width: 5.5rem;" readonly>
+                <button type="button" class="close ml-2" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label class="text-muted">Medium</label>
+                <input type="number" class="form-control rounded-0 d-inline-block text-center px-0 ml-2" value="999" style="width: 3.5rem;">
+                <div class="d-inline-block">
+                  <button type="button" class="btn btn-link px-0 text-muted"><i class="fas fa-plus-circle" title="Add"></i></button>
+                  <button type="button" class="btn btn-link px-0 text-muted"><i class="fas fa-minus-circle" title="Remove"></i></button>
+                </div>
+              </div>
+              <div class="col text-right">
+                <input type="text" class="form-control bg-light border-0 d-inline-block px-0 text-right" value="9,999,999 원" style="width: 5.5rem;" readonly>
+                <button type="button" class="close ml-2" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+            </div>
+          </div>
+
+          <p><small class="text-muted">배송비는 구매 문의 화면에서 국가에 따라 적용됩니다.</small></p>
+
+          <div class="row m4-5 mb-5">
+            <div class="col">합계</div>
+            <div class="col text-right h4">17,000</div>
+          </div>
+
+          <div class="text-right">
+            <button type="button" class="btn btn-lg btn-primary px-5 mb-3">구매 문의하기</button>
+            <button type="button" class="btn btn-lg btn-primary px-5 mb-3" disabled>Sold Out</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="topbar text-left py-3">
+      <div class="container">
+        <ul class="list-inline mb-1">
+          <li class="list-inline-item mr-0"><a href="#" class="btn btn-sm btn-link py-0 pl-0 pr-4 border-top-0 border-left-0 border-bottom-0 border-secondary rounded-0">회사소개</a></li>
+          <li class="list-inline-item mr-0"><a href="#" class="btn btn-sm btn-link py-0 px-4 border-top-0 border-left-0 border-bottom-0 border-secondary rounded-0">개인정보처리방침</a></li>
+          <li class="list-inline-item mr-0"><a href="#" class="btn btn-sm btn-link py-0 px-4 border-top-0 border-left-0 border-bottom-0 border-secondary rounded-0">공지사항</a></li>
+          <li class="list-inline-item mr-0"><a href="#" class="btn btn-sm btn-link py-0 px-4 border-top-0 border-left-0 border-bottom-0 border-secondary rounded-0">이용문의</a></li>
+          <li class="list-inline-item mr-0"><a href="#" class="btn btn-sm btn-link py-0 px-4">상담예약</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container pt-4 pb-3">
+      <div class="row">
+        <div class="col-lg-2 mb-3"><img id="footerLogo" src="assets/img/logo-white.png" width="69" height="62" alt="logo"></div>
+        <div class="col-lg-8 col-xl-7 mb-3">
+          <small class="d-block d-lg-inline mr-lg-3">주식회사 아이다인터내셔널</small>
+          <small class="d-block d-lg-inline">서울특별시 강남구 논현로159길 27 (신사동) 2F 아이다인터내셔널</small>
+          <br>
+          <small class="d-block d-lg-inline mr-lg-3">대표 : 양태규</small>
+          <small class="d-block d-lg-inline mr-lg-3">사업자 등록번호 안내 : 298-88-01211 <a href="#">사업자정보확인</a></small>
+          <small class="d-block d-lg-inline">통신판매업 신고 제2019-서울강남-01847호</small>
+          <br>
+          <small class="d-block d-lg-inline">호스트서버소재지 : 서울특별시 강남구 논현로159길 27 다우빌딩 2층 (신사동)</small>
+          <br>
+          <small class="d-block d-lg-inline mr-lg-3">개인정보관리책임자 : 조우진</small>
+          <small class="d-block d-lg-inline">대표메일 : info@aidainter.com</small>
+          <br>
+          <small>COPYRIGHT © 2020 WSL CORP. ALL RIGHTS RESERVED.</small>
+        </div>
+        <div class="col-lg-2 col-xl-3">
+          <div class="h4">CS Center</div>
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="h5">02.6956.9083</div>
+              <ul class="list-inline">
+                <li class="list-inline-item mr-3"><a href="#"><i class="fab fa-facebook-f fa-lg"></i></a></li>
+                <li class="list-inline-item mr-3"><a href="#"><i class="fab fa-twitter fa-lg"></i></a></li>
+                <li class="list-inline-item mr-3"><a href="#"><i class="fab fa-instagram fa-lg"></i></a></li>
+              </ul>
+            </div>
+            <div class="col-xl-6">
+              <p>
+                <small>평일 10:00 ~ 18:00<br>
+                  주말 및 공휴일 휴무</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content rounded-0">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signInLabel">로그인</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mx-lg-5 px-lg-8">
+            <h6 class="mt-4 my-3">WSL 회원 로그인</h6>
+            <div class="row form-row mb-3">
+              <div class="col-lg-8">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text rounded-0 border-0 bg-light"><i class="fas fa-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control rounded-0 border-0 bg-light py-4" placeholder="아이디" aria-label="아이디">
+                </div>
+                <div class="input-group mb-3 mb-lg-0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text rounded-0 border-0 bg-light"><i class="fas fa-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control rounded-0 border-0 bg-light py-4" placeholder="비밀번호" aria-label="비밀번호">
+                </div>
+              </div>
+              <div class="col-lg-4"><button type="button" class="btn btn-block btn-primary" href="#signInErrorModal" data-toggle="modal" data-target="#signInErrorModal" style="height: 100%;">로그인</button></div>
+            </div>
+
+            <div class="mb-5">
+              <div class="custom-control custom-checkbox custom-control-inline d-block d-lg-inline-block mb-3">
+                <input type="checkbox" class="custom-control-input" id="rememberId">
+                <label class="custom-control-label" for="rememberId">아이디 저장</label>
+              </div>
+              <a href="#">아이디 찾기 / 비밀번호 재설정</a>
+            </div>
+
+            <h6 class="mb-4">SNS 계정 로그인</h6>
+            <div class="row form-row mb-5">
+              <div class="col-lg-4"><button type="button" class="btn btn-block btn-white border mb-3"><img class="mr-2 my-2" src="assets/img/google.svg" width="16" height="16" alt="Google">구글</button></div>
+              <div class="col-lg-4"><button type="button" class="btn btn-block btn-white border mb-3"><i class="fas fa-comment rounded-circle mr-2" style="padding: 8px; background-color: #fcee2d; color: #3b1d1f;"></i>카카오</button></div>
+              <div class="col-lg-4"><button type="button" class="btn btn-block btn-white border mb-3"><img class="mr-2 my-2" src="assets/img/naver.svg" width="16" height="16" alt="Naver">네이버</button></div>
+            </div>
+
+            <div class="row form-row mb-5">
+              <div class="col-lg-6 align-self-center mb-3">WSL 회원이 아니신가요?</div>
+              <div class="col-lg-6"><button type="button" class="btn btn-block btn-dark py-lg-3">회원가입</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="signInErrorModal" tabindex="-1" role="dialog" aria-labelledby="signInErrorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content rounded-0">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signInErrorModalLabel">로그인</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mx-lg-9 text-center">
+            <h6 class="mt-5">가입된 회원 정보가 없습니다.</h6>
+            <p class="text-muted mb-5">WSL에 회원 가입하시겠습니까?</p>
+            <div class="row form-row mb-5">
+              <div class="col-lg-6 mb-3"><button type="button" class="btn btn-block btn-light border py-3">아니요, 다음에 할께요</button></div>
+              <div class="col-lg-6 mb-3"><button type="button" class="btn btn-block btn-primary py-3">회원가입</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="searchErrorModal">
+    <div class="modal-dialog" role="document">
+      <div class="alert alert-dark bg-primary text-white border-0 alert-dismissible fade show mb-0" role="alert">
+        <i class="fas fa-exclamation-triangle mr-1 text-warning"></i> <strong>검색어</strong>를 입력해 주세요.
+        <button type="button" class="close text-white data-dismiss=" moddal" aria-label="Close" style="text-shadow: none;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content bg-transparent rounded-0 border-0">
+        <div class="modal-header border-0">
+          <h5 class="modal-title d-none" id="reviewModalLabel">Review</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="text-shadow: none;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bg-white p-0">
+          <div class="row no-gutters">
+            <div class="col-lg-7">
+              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="https://via.placeholder.com/800x960" class="d-block w-100" alt="Review Photo">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://via.placeholder.com/800x960" class="d-block w-100" alt="Review Photo">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://via.placeholder.com/800x960" class="d-block w-100" alt="Review Photo">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-5 p-3">
+              <small class="pr-2 border-right mr-2">구매자</small><small>2020.02.25</small>
+              <h6 class="border-bottom pb-2 my-3">Product Detail</h6>
+              <div class="row mb-3">
+                <div class="col">
+                  <h6>[STANDARD]<br>
+                    와인레드 페블엠보</h6>
+                  <small>EE19SDEFEF5441C</small>
+                  <dl class="row mt-2 mb-0">
+                    <dt class="col-6 text-uppercase">Type</dt>
+                    <dd class="col-6">Natural</dd>
+                    <dt class="col-6 text-uppercase">Color</dt>
+                    <dd class="col-6">Yellow</dd>
+                  </dl>
+                </div>
+                <div class="col"><img src="https://via.placeholder.com/800" class="img-fluid" alt="Review Photo"></div>
+              </div>
+              <div class="d-flex justify-content-between border-bottom mb-3">
+                <h6>Reviews</h6>
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                  <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                  <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                  <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+                  <li class="list-inline-item m-0"><i class="fas fa-star text-muted"></i></li>
+                </ul>
+              </div>
+              <p data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+              sagittis lacus vel augue laoreet rutrum faucibus.">다양한 제품에 활용하기 좋았습니다.</p>
+              <div class="border pt-3 px-3">
+                <strong>[WSL]</strong>
+                <p>고객님 소중한 후기 감사합니다.<br>
+                  관리자 댓글을 호출합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-white rounded-0 p-4 border-primary">
+        <div class="modal-header p-0">
+          <h5 class="modal-title mb-3" id="shareModalLabel">WSL 상품 공유하기</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bg-white p-0">
+          <h6 class="my-3">사이트 주소 공유</h6>
+          <div class="input-group mb-3">
+            <input type="url" class="form-control rounded-0" value="https://wsl-store.com/product">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button" data-container="body" data-toggle="popover" data-placement="bottom" data-content="사이트 주소가 복사되었습니다.">복사하기</button>
+            </div>
+          </div>
+          <h6 class="my-3">SNS 공유</h6>
+          <button type="button" class="btn btn-lg btn-primary rounded-circle border-0 mr-2" style="width: 3rem; height: 3rem; background-color: #1778F2;"><i class="fab fa-facebook-f" title="Facebook"></i></button>
+          <button type="button" class="btn btn-lg btn-primary rounded-circle border-0 mr-2" style="width: 3rem; height: 3rem; background-color: #55ACEE;"><i class="fab fa-twitter" title="Twitter"></i></button>
+          <button type="button" class="btn btn-lg btn-primary rounded-circle border-0 mr-2" style="width: 3rem; height: 3rem; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);"><i class="fab fa-instagram" title="Instagram"></i></button>
+          <button type="button" class="btn btn-lg btn-primary rounded-circle border-0" style="width: 3rem; height: 3rem; background-color: #fcee2d;"><i class="fas fa-comment" style="color: #3b1d1f;" title="KakaoTalk"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+  <script>
+    bsCustomFileInput.init();
+  </script>
+</body>
+
+</html>
