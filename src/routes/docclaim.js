@@ -39,7 +39,7 @@ docclaimRouter.post(
         let didID = '';
         let addressYN = false;
         let reviewYN = false;
-        let { userPub, userName, address1, address2, phone, productId, reviewCont, reviewRat } = req.body;
+        let { userPub, userName, address1, address2, phone, productId, reviewCont } = req.body;
 
         if (address1) {
           if (!phone) {
@@ -122,16 +122,13 @@ docclaimRouter.post(
           let claimDoc = {};
           claimDoc["id"] = didID;
 
-          let encUserName = crypto.AES.encrypt(userName, hexPub).toString();
           let encProductId = crypto.AES.encrypt(productId, hexPub).toString();
           let encReviewConts = crypto.AES.encrypt(reviewCont, hexPub).toString();
-          let encReviewRat = crypto.AES.encrypt(reviewRat, hexPub).toString();
 
           let claimReviewValue = {};
-          claimReviewValue["userName"] = encUserName;
+          claimReviewValue["userName"] = didID;
           claimReviewValue["productId"] = encProductId;
           claimReviewValue["reviewConts"] = encReviewConts;
-          claimReviewValue["reviewRat"] = encReviewRat;
           claimReviewValue["reviewDate"] = new Date();
           claimDoc["claim"] = claimReviewValue;
         
