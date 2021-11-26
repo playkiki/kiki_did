@@ -105,6 +105,17 @@ describe('kiki did API Exception Test - Routes /api/v1/kiki', () => {
   });
 
   describe('request document - POST /reqclaim', () => {
+    test('request without userPri and didID correctly', async () => {
+      const reqData = { };
+      const res = await global.agent.post(encodeURI(`/api/v1/kiki/reqclaim`)).send(reqData);
+      console.info('res.body : ', res.body);
+      expect(res.status).to.equal(422);
+      expect(res.body.success).to.be.false;
+      expect(res.body.errorcode).to.equal('KDE0001');
+    });
+  });
+
+  describe('request document - POST /reqclaim', () => {
     test('request with userPri without didID correctly', async () => {
       const reqData = { userPri: setUserPri };
       const res = await global.agent.post(encodeURI(`/api/v1/kiki/reqclaim`)).send(reqData);
