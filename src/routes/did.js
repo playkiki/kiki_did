@@ -98,7 +98,7 @@ didRouter.post(
           claimAddressValue["phone"] = encPhone;
           claimDoc["claim"] = claimAddressValue;
         
-          console.log('claimAddressDoc : ', claimDoc);
+          // console.log('claimAddressDoc : ', claimDoc);
         
           let claimData = {
             'didID'  : didID,
@@ -135,7 +135,7 @@ didRouter.post(
           claimReviewValue["reviewDate"] = new Date();
           claimDoc["claim"] = claimReviewValue;
         
-          console.log('claimReviewDoc : ', claimDoc);
+          // console.log('claimReviewDoc : ', claimDoc);
         
           let claimData = {
             'didID'  : didID,
@@ -264,7 +264,7 @@ didRouter.post(
         let tmpCid = new CID(didID);
         let doc = (await DidDocument.load(ipfs, tmpCid))._content;
   
-        console.debug('doc : ', doc);
+        // console.debug('doc : ', doc);
         let userPub;
         doc.publicKey.forEach(publicKey => {
           if (publicKey.type === 'Secp256k1VerificationKey2018')
@@ -275,7 +275,7 @@ didRouter.post(
         // let claimJson = JSON.parse(claimDoc);
         // let claim = claimJson.claim;
         let claim = claimDoc.claim;
-        console.log('claim : ', claim);
+        // console.log('claim : ', claim);
         let userName = crypto.AES.decrypt(claim.userName, userPub).toString(crypto.enc.Utf8);
         let address1 = crypto.AES.decrypt(claim.address1, userPub).toString(crypto.enc.Utf8);
         let address2 = crypto.AES.decrypt(claim.address2, userPub).toString(crypto.enc.Utf8);
@@ -291,7 +291,7 @@ didRouter.post(
         rtnBody.success = true;
         rtnBody.result = resultInfo;
   
-        console.log('rtnBody : ', rtnBody);
+        // console.log('rtnBody : ', rtnBody);
   
         return res.status(200).jsonp(rtnBody);
       } catch(exp) {
