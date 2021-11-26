@@ -195,6 +195,25 @@ You can use docker image to build your own privte IPFS easily.
 
 https://hub.docker.com/r/ipfs/go-ipfs/
 
+Sample code for docker-compose.xml
+```
+  ipfs-node:
+    container_name: ipfs-node
+    image: ipfs/go-ipfs
+    environment:
+      - PUID=1002
+      - PGID=1002
+      - TZ=Asia/Seoul
+    volumes:
+      - /home/docker/ipfs-node:/data/ipfs
+      - /home/docker/ipfs-staging:/staging
+    ports:
+      - 4001:4001
+      - 5001:5001
+      - 8080:8080
+    restart: unless-stopped
+```
+
 ### DB setting
 
 We are using MySQL database as storage for personal documents.
