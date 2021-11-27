@@ -13,6 +13,8 @@ Decentralized Identity is an emerging concept that gives back control of identit
 
 ## W3C standards
 - [Decentralized Identifiers] https://www.w3.org/TR/did-core/
+- [Use Cases and Requirements for Decentralized Identifiers] https://www.w3.org/TR/did-use-cases/
+- [DID Implementation Guide v1.0] https://www.w3.org/TR/did-imp-guide/
 
 ## DEMO page
 - https://www.wsl-store.com/did_product_detail.php?num=171
@@ -22,6 +24,7 @@ Decentralized Identity is an emerging concept that gives back control of identit
 see license https://github.com/playkiki/kiki_did/blob/main/LICENSE
 
 ## How to participate
+<<<<<<< HEAD
 Register github issue at https://github.com/playkiki/kiki_did/issues/new/choose
 
 ## Contributing guidelines
@@ -247,5 +250,9 @@ $ yarn serve
 Run the test command.
 ```
 $ yarn test
-```
+```test test
 
+=======
+Register github issue at https://github.com/playkiki/kiki_did/issues 
+test code //
+>>>>>>> a3f9ae99f596fbedc4d90e93aaecbe79d89641ce
