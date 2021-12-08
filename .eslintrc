@@ -81,7 +81,7 @@
         "consistent": true
       }
     ],
-    "max-len": ["error", { "code": 230 }],
+    // "max-len": ["error", { "code": 230 }],
     // "function-paren-newline": ["error", "never"],
     "no-multi-spaces": ["error", { "exceptions": { "BinaryExpression": true, "VariableDeclarator": true, "ImportDeclaration": true } }]
   }
