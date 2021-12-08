@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "kiki_did",
+      "script": "dist/server.js",
+      "watch": false,
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "exec_mode": "cluster",
+      "instances": "4"
+    }
+  ]
+}
